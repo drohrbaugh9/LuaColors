@@ -1,4 +1,4 @@
---[[function redPrint(s)
+function redPrint(s)
    print("\x1b[0;31m" .. s .. "\x1b[0m")
 end
 
@@ -46,7 +46,7 @@ function colorText(s, c)
    end
 end
 
-redPrint("<RED>")
+--[[redPrint("<RED>")
 greenPrint("<GREEN>")
 yellowPrint("<YELLOW>")
 print(red("<RED>") .. green("<GREEN>") .. yellow("<YELLOW>"))

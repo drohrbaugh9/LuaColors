@@ -90,4 +90,4 @@ print(red("C") .. yellow("O") .. green("L") .. blue("O") .. purple("R") .. light
 colorPrint("C", "red") colorPrint("O", "yellow") colorPrint("L", "green") colorPrint("O", "blue") colorPrint("R", "purple") colorPrint("S", "lightBlue")
 print(colorText("C", "red") .. colorText("O", "yellow") .. colorText("L", "green") .. colorText("O", "blue") .. colorText("R", "purple") .. colorText("S", "lightBlue"))
 multipleColorsPrint({{"C","red"},{"O","yellow"},{"L","green"},{"O","blue"},{"R","purple"},{"S","lightBlue"}})
-print(multipleColors({{"C","red"},{"O","yellow"},{"L","green"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}))
+print(multipleColors({{"C","red"},{"O","yellow"},{"L","green"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}) .. "\x1b[0;31m")

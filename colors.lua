@@ -50,13 +50,13 @@ function colorPrint(s, c) print(colorText(s, c)) end
 
 function colorText(s, c)
    if type(c) == "string" then
-      c = string.upper(c)
-      if c == "RED" then return red(s) end
-      if c == "GREEN" then return green(s) end
-      if c == "YELLOW" then  return yellow(s) end
-      if c == "BLUE" then return blue(s) end
-      if c == "PURPLE" then return purple(s) end
-      if c == "LIGHTBLUE" then return lightBlue(s) end
+      c = string.lower(c)
+      if c == "red" then return red(s) end
+      if c == "green" then return green(s) end
+      if c == "yellow" then  return yellow(s) end
+      if c == "blue" then return blue(s) end
+      if c == "purple" then return purple(s) end
+      if c == "lightblue" then return lightBlue(s) end
    end
 end
 
@@ -70,10 +70,22 @@ function multipleColors(t)
    return st
 end
 
+function terminalColor(c)
+   if type(c) == "string" then
+      c = string.lower(c)
+      if c == "red" then print("\x1b[0;31m") end
+      if c == "green" then print("\x1b[0;32m") end
+      if c == "yellow" then print("\x1b[0;33m") end
+      if c == "blue" then print("\x1b[0;34m") end
+      if c == "purple" then print("\x1b[0;35m") end
+      if c == "lightblue"then print("\x1b[0;36m") end
+   end
+end
+
 --examples
 redPrint("C") yellowPrint("O") greenPrint("L") bluePrint("O") purplePrint("R") lightBluePrint("S")
-print(red("C") .. yellow("O") .. green("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")
-colorPrint("C", "red") colorPrint("O", "yellow") colorPrint("L", "green") colorPrint("O", "blue") colorPrint("R", "purple") colorPrint("S", "lightBlue")
-print(colorText("C", "red") .. colorText("O", "yellow") .. colorText("L", "green") .. colorText("O", "blue") .. colorText("R", "purple") .. colorText("S", "lightBlue"))
-multipleColorsPrint({{"C","red"},{"O","yellow"},{"L","green"},{"O","blue"},{"R","purple"},{"S","lightBlue"}})
-print(multipleColors({{"C","red"},{"O","yellow"},{"L","green"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}) .. "\x1b[0;31m")
+print(red("C") .. green("O") .. yellow("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")
+colorPrint("C", "red") colorPrint("O", "green") colorPrint("L", "yellow") colorPrint("O", "blue") colorPrint("R", "purple") colorPrint("S", "lightBlue")
+print(colorText("C", "red") .. colorText("O", "green") .. colorText("L", "yellow") .. colorText("O", "blue") .. colorText("R", "purple") .. colorText("S", "lightBlue"))
+multipleColorsPrint({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}})
+print(multipleColors({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}))

@@ -84,6 +84,7 @@ function multipleColors(t)
    return st
 end
 
+--examples
 redPrint("C") yellowPrint("O") greenPrint("L") bluePrint("O") purplePrint("R") lightBluePrint("S")
 print(red("C") .. yellow("O") .. green("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")
 colorPrint("C", "red") colorPrint("O", "yellow") colorPrint("L", "green") colorPrint("O", "blue") colorPrint("R", "purple") colorPrint("S", "lightBlue")

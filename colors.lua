@@ -72,17 +72,21 @@ function colorText(s, c)
    end
 end
 
+function multipleColorsPrint(t)
+   print(multipleColors(t))
+end
+
 function multipleColors(t)
    st = ""
-   for s,c in pairs(t) do
-      st = st .. colorText(s, c) .. " "
-      --print(s, c)
+   for c,s in pairs(t) do
+      st = st .. colorText(s[1],s[2])
    end
    return st
 end
 
---print(red("C") .. yellow("O") .. green("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")
-
-t = {}
-t["<RED>"] = "red" t["<YELLOW>"] = "yellow" t["RED again"] = "red"
-print(multipleColors(t))
+redPrint("C") yellowPrint("O") greenPrint("L") bluePrint("O") purplePrint("R") lightBluePrint("S")
+print(red("C") .. yellow("O") .. green("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")
+colorPrint("C", "red") colorPrint("O", "yellow") colorPrint("L", "green") colorPrint("O", "blue") colorPrint("R", "purple") colorPrint("S", "lightBlue")
+print(colorText("C", "red") .. colorText("O", "yellow") .. colorText("L", "green") .. colorText("O", "blue") .. colorText("R", "purple") .. colorText("S", "lightBlue"))
+multipleColorsPrint({{"C","red"},{"O","yellow"},{"L","green"},{"O","blue"},{"R","purple"},{"S","lightBlue"}})
+print(multipleColors({{"C","red"},{"O","yellow"},{"L","green"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}))

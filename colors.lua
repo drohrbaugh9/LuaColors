@@ -72,4 +72,17 @@ function colorText(s, c)
    end
 end
 
-print(red("C") .. yellow("O") .. green("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")
+function multipleColors(t)
+   st = ""
+   for s,c in pairs(t) do
+      st = st .. colorText(s, c) .. " "
+      --print(s, c)
+   end
+   return st
+end
+
+--print(red("C") .. yellow("O") .. green("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")
+
+t = {}
+t["<RED>"] = "red" t["<YELLOW>"] = "yellow" t["RED again"] = "red"
+print(multipleColors(t))

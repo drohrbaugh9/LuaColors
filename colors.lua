@@ -51,24 +51,25 @@ function colorPrint(s, c)
 end
 
 function colorText(s, c)
-   if c == "red" or c == "Red" then
+   c = string.upper(c)
+   if c == "RED" then
       return red(s)
    end
-   if c == "green" or c == "Green" then
+   if c == "GREEN" then
       return green(s)
    end
-   if c == "yellow" or c == "Yellow" then
+   if c == "YELLOW" then
       return yellow(s)
    end
-   if c == "blue" or c == "Blue" then
+   if c == "BLUE" then
       return blue(s)
    end
-   if c == "purple" or c == "Purple" then
+   if c == "PURPLE" then
       return purple(s)
    end
-   if c == "lightBlue" or c == "lightblue" or c == "Lightblue" or c == "LightBlue" then
+   if c == "LIGHTBLUE" then
       return lightBlue(s)
    end
 end
 
-print(red("C") .. yellow("O") .. green("L") .. blue("O") .. purple("R") .. lightBlue("S"))
+print(red("C") .. yellow("O") .. green("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")

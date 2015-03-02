@@ -71,7 +71,7 @@ function multipleColorsPrint(t) print(multipleColors(t)) end
 
 function multipleColors(t)
    st = ""
-   for n,s in pairs(t) do
+   for n,s in pairs(t) do --TODO incorrect usage of pairs
       st = st .. colorText(s[1],s[2])
    end
    return st

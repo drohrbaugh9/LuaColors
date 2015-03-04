@@ -69,13 +69,13 @@ end
 
 function multipleColorsPrint(t) print(multipleColors(t)) end
 
-function multipleColors(t)
+--[[function multipleColors(t)
    st = ""
    for n,s in pairs(t) do --TODO incorrect usage of pairs
       st = st .. colorText(s[1],s[2])
    end
    return st
-end
+end]] --Is this method even necessary?
 
 function terminalColor(c)
    if type(c) == "string" then

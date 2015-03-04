@@ -67,7 +67,7 @@ function colorText(s, c)
    end
 end
 
-function multipleColorsPrint(t) print(multipleColors(t)) end
+--function multipleColorsPrint(t) print(multipleColors(t)) end
 
 --[[function multipleColors(t)
    st = ""
@@ -94,6 +94,6 @@ redPrint("C") greenPrint("O") yellowPrint("L") bluePrint("O") purplePrint("R") l
 print(red("C") .. green("O") .. yellow("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")
 colorPrint("C", "red") colorPrint("O", "green") colorPrint("L", "yellow") colorPrint("O", "blue") colorPrint("R", "purple") colorPrint("S", "lightBlue")
 print(colorText("C", "red") .. colorText("O", "green") .. colorText("L", "yellow") .. colorText("O", "blue") .. colorText("R", "purple") .. colorText("S", "lightBlue"))
-multipleColorsPrint({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}})
-print(multipleColors({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}))
+--multipleColorsPrint({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}})
+--print(multipleColors({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}))
 terminalColor("blue")

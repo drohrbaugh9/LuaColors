@@ -16,45 +16,45 @@ local green = function(s)
    error("string expected, got " .. type(s))
 end
 
-function yellowPrint(s) print(yellow(s)) end
+local yellowPrint = function(s) print(yellow(s)) end
 
-function yellow(s)
+yellow = function(s)
    if type(s) == "string" then
       return "\x1b[0;33m" .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
 
-function bluePrint(s) print(blue(s)) end
+local bluePrint = function(s) print(blue(s)) end
 
-function blue(s)
+local blue = function(s)
    if type(s) == "string" then
       return "\x1b[0;34m" .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
 
-function purplePrint(s) print(purple(s)) end
+local purplePrint = function(s) print(purple(s)) end
 
-function purple(s)
+local purple = function(s)
    if type(s) == "string" then
       return "\x1b[0;35m" .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
 
-function lightBluePrint(s) print(lightBlue(s)) end
+local lightBluePrint = function(s) print(lightBlue(s)) end
 
-function lightBlue(s)
+local lightBlue = function(s)
    if type(s) == "string" then
       return "\x1b[0;36m" .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
 
-function colorPrint(s, c) print(colorText(s, c)) end
+local colorPrint = function(s, c) print(colorText(s, c)) end
 
-function colorText(s, c)
+local colorText = function(s, c)
    if type(c) == "string" then
       c = string.lower(c)
       if c == "red" then return red(s) end
@@ -67,14 +67,14 @@ function colorText(s, c)
    end
 end
 
-function values(t)
+local values = function(t)
   local i = 0
   return function ()  i = i + 1; return t[i] end
 end
 
-function multipleColorsPrint(t, c) print(multipleColors(t, c)) end
+local multipleColorsPrint = function(t, c) print(multipleColors(t, c)) end
 
-function multipleColors(t, c)
+local multipleColors = function(t, c)
   if type(c) == "string" then
     st = ""
     for s in values(t) do
@@ -85,7 +85,7 @@ function multipleColors(t, c)
   error("string expected, got " .. type(c))
 end
 
-function terminalColor(c)
+local terminalColor = function(c)
    if type(c) == "string" then
       c = string.lower(c)
       if c == "red" then print("\x1b[0;31m") end

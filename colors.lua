@@ -1,60 +1,60 @@
-local redPrint = function(s) print(red(s)) end
+function redPrint(s) print(red(s)) end
 
-local red = function(s)
+function red(s)
    if type(s) == "string" then
       return "\x1b[0;31m" .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
 
-local greenPrint = function(s) print(green(s)) end
+function greenPrint(s) print(green(s)) end
 
-local green = function(s)
+function green(s)
    if type(s) == "string" then
       return "\x1b[0;32m" .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
 
-local yellowPrint = function(s) print(yellow(s)) end
+function yellowPrint(s) print(yellow(s)) end
 
-yellow = function(s)
+function yellow(s)
    if type(s) == "string" then
       return "\x1b[0;33m" .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
 
-local bluePrint = function(s) print(blue(s)) end
+function bluePrint(s) print(blue(s)) end
 
-local blue = function(s)
+function blue(s)
    if type(s) == "string" then
       return "\x1b[0;34m" .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
 
-local purplePrint = function(s) print(purple(s)) end
+function purplePrint(s) print(purple(s)) end
 
-local purple = function(s)
+function purple(s)
    if type(s) == "string" then
       return "\x1b[0;35m" .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
 
-local lightBluePrint = function(s) print(lightBlue(s)) end
+function lightBluePrint(s) print(lightBlue(s)) end
 
-local lightBlue = function(s)
+function lightBlue(s)
    if type(s) == "string" then
       return "\x1b[0;36m" .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
 
-local colorPrint = function(s, c) print(colorText(s, c)) end
+function colorPrint(s, c) print(colorText(s, c)) end
 
-local colorText = function(s, c)
+function colorText(s, c)
    if type(c) == "string" then
       c = string.lower(c)
       if c == "red" then return red(s) end
@@ -67,9 +67,9 @@ local colorText = function(s, c)
    end
 end
 
-local multipleColorsPrint = function(t, c) print(multipleColors(t, c)) end
+function multipleColorsPrint(t, c) print(multipleColors(t, c)) end
 
-local multipleColors = function(t, c)
+function multipleColors(t, c)
   if type(c) == "string" then
     st = ""
     for s in values(t) do
@@ -80,12 +80,12 @@ local multipleColors = function(t, c)
   error("string expected, got " .. type(c))
 end
 
-local values = function(t)
+function values(t)
   local i = 0
   return function ()  i = i + 1; return t[i] end
 end
 
-local terminalColor = function(c)
+function terminalColor(c)
    if type(c) == "string" then
       c = string.lower(c)
       if c == "red" then print("\x1b[0;31m") end

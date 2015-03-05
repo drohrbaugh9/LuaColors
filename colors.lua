@@ -67,11 +67,6 @@ local colorText = function(s, c)
    end
 end
 
-local values = function(t)
-  local i = 0
-  return function ()  i = i + 1; return t[i] end
-end
-
 local multipleColorsPrint = function(t, c) print(multipleColors(t, c)) end
 
 local multipleColors = function(t, c)
@@ -83,6 +78,11 @@ local multipleColors = function(t, c)
     return st
   end
   error("string expected, got " .. type(c))
+end
+
+local values = function(t)
+  local i = 0
+  return function ()  i = i + 1; return t[i] end
 end
 
 local terminalColor = function(c)

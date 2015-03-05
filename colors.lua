@@ -1,15 +1,15 @@
 local redPrint = function(s) print(red(s)) end
 
-function red(s)
+local red = function(s)
    if type(s) == "string" then
       return "\x1b[0;31m" .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
 
-function greenPrint(s) print(green(s)) end
+local greenPrint = function(s) print(green(s)) end
 
-function green(s)
+local green = function(s)
    if type(s) == "string" then
       return "\x1b[0;32m" .. s .. "\x1b[0m"
    end

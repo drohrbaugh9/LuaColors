@@ -100,9 +100,9 @@ local terminalColor = function(c)
 end
 
 --examples
-redPrint("C") greenPrint("O") yellowPrint("L") bluePrint("O") purplePrint("R") lightBluePrint("S")
+redPrint("C"); greenPrint("O"); yellowPrint("L"); bluePrint("O"); purplePrint("R"); lightBluePrint("S");
 print(red("C") .. green("O") .. yellow("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")
-colorPrint("C", "red") colorPrint("O", "green") colorPrint("L", "yellow") colorPrint("O", "blue") colorPrint("R", "purple") colorPrint("S", "lightBlue")
+colorPrint("C", "red"); colorPrint("O", "green"); colorPrint("L", "yellow"); colorPrint("O", "blue"); colorPrint("R", "purple"); colorPrint("S", "lightBlue");
 print(colorText("C", "red") .. colorText("O", "green") .. colorText("L", "yellow") .. colorText("O", "blue") .. colorText("R", "purple") .. colorText("S", "lightBlue"))
 multipleColorsPrint({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " ")
 print(multipleColors({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " "))

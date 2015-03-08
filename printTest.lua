@@ -6,3 +6,5 @@ function print (...)
   end
   printResult = printResult .. "\n"
 end
+
+print("a", "b", "c")

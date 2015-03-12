@@ -5,6 +5,7 @@ function Print (...)
     printResult = printResult .. tostring(v) .. "\t"
   end
   printResult = printResult .. "\n"
+  print(printResult)
 end
 
 Print("a", "b", "c")

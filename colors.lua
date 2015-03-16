@@ -13,20 +13,7 @@ function availableColors() return "red, green, yellow, blue, purple, lightblue" 
 function values(t)
   local i = 0
   return function ()  i = i + 1; return t[i] end
-end
-
---[[indexOf = function(t, o)
-   local r
-   if "table" == type(t) then
-      for i = 1, #t do
-	 if o == t[i] then
-	    r = i
-	    break
-	 end
-      end
-   end
-   return r
-end]]
+end    
 
 --function redPrint(s) print(red(s)) end
 

@@ -1,14 +1,20 @@
+function availableColors() print("red, green, yellow, blue, purple, light blue") end
+
 function redPrint(s) print(red(s)) end
 
 function red(s)
    if type(s) == "string" or type(s) == "number" then
       return "\x1b[0;31m" .. s .. "\x1b[0m"
+   elseif type(s) == "table" then
+      st = unpack(s)
+      return "\x1b[0;31m" .. st .. "\x1b[0m"
+   else
+      return "\x1b[0;31m" .. tostring(s) .. "\x1b[0m"
    end
-   return "\x1b[0;31m" .. tostring(s) .. "\x1b[0m"
    error("string expected, got " .. type(s))
 end
 
-function greenPrint(s) print(green(s)) end
+--function greenPrint(s) print(green(s)) end
 
 function green(s)
    if type(s) == "string" or type(s) == "number" then
@@ -17,7 +23,7 @@ function green(s)
    error("string expected, got " .. type(s))
 end
 
-function yellowPrint(s) print(yellow(s)) end
+--function yellowPrint(s) print(yellow(s)) end
 
 function yellow(s)
    if type(s) == "string" or type(s) == "number" then
@@ -26,7 +32,7 @@ function yellow(s)
    error("string expected, got " .. type(s))
 end
 
-function bluePrint(s) print(blue(s)) end
+--function bluePrint(s) print(blue(s)) end
 
 function blue(s)
    if type(s) == "string" or type(s) == "number" then
@@ -35,7 +41,7 @@ function blue(s)
    error("string expected, got " .. type(s))
 end
 
-function purplePrint(s) print(purple(s)) end
+--function purplePrint(s) print(purple(s)) end
 
 function purple(s)
    if type(s) == "string" or type(s) == "number" then
@@ -44,7 +50,7 @@ function purple(s)
    error("string expected, got " .. type(s))
 end
 
-function lightBluePrint(s) print(lightBlue(s)) end
+--function lightBluePrint(s) print(lightBlue(s)) end
 
 function lightBlue(s)
    if type(s) == "string" or type(s) == "number" then
@@ -53,7 +59,7 @@ function lightBlue(s)
    error("string expected, got " .. type(s))
 end
 
-function colorPrint(s, c) print(colorText(s, c)) end
+--function colorPrint(s, c) print(colorText(s, c)) end
 
 function colorText(s, c)
    if type(c) == "string" then
@@ -68,17 +74,20 @@ function colorText(s, c)
    end
 end
 
-function multipleColorsPrint(t, c) print(multipleColors(t, c)) end
+--function multipleColorsPrint(t, c) print(multipleColors(t, c)) end
 
 function multipleColors(t, c)
-  if type(c) == "string" then
-    st = ""
-    for s in values(t) do
-      st = st .. colorText(s[1],s[2]) .. c
-    end
-    return st
-  end
-  error("string expected, got " .. type(c))
+   if type(t) == "table" then
+      if type(c) == "string" then
+	 st = ""
+	 for s in values(t) do
+	    st = st .. colorText(s[1],s[2]) .. c
+	 end
+	 return st
+      end
+      error("string expected, got " .. type(c))
+   end
+   error("table expected, got " .. type(t))
 end
 
 function values(t)
@@ -101,12 +110,12 @@ function terminalColor(c)
 end
 
 --examples
-redPrint("C"); greenPrint("O"); yellowPrint("L"); bluePrint("O"); purplePrint("R"); lightBluePrint("S");
+--redPrint("C"); greenPrint("O"); yellowPrint("L"); bluePrint("O"); purplePrint("R"); lightBluePrint("S");
 print(red("C") .. green("O") .. yellow("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")
-colorPrint("C", "red"); colorPrint("O", "green"); colorPrint("L", "yellow"); colorPrint("O", "blue"); colorPrint("R", "purple"); colorPrint("S", "lightBlue");
+--colorPrint("C", "red"); colorPrint("O", "green"); colorPrint("L", "yellow"); colorPrint("O", "blue"); colorPrint("R", "purple"); colorPrint("S", "lightBlue");
 print(colorText("C", "red") .. colorText("O", "green") .. colorText("L", "yellow") .. colorText("O", "blue") .. colorText("R", "purple") .. colorText("S", "lightBlue"))
-multipleColorsPrint({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " ")
+--multipleColorsPrint({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " ")
 print(multipleColors({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " "))
-t = {}
+t = {"<RED>","more red"}
 redPrint(t)
 terminalColor("green")

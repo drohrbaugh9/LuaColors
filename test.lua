@@ -1,13 +1,8 @@
 c = require("colors")
 c.initialize()
 
---[[print(c.red("<RED>"))
-print(c.green("<GREEN>"))
-print(c.yellow("<YELLOW>"))
-print(c.blue("<BLUE"))
-print(c.purple("<PURPLE>"))
-print(c.lightBlue("<LIGHTBLUE>"))]]
+print(c.red("C") .. c.green("O") ..c.yellow("L") .. c.blue("O") .. c.purple("R") .. c.lightBlue("S"))
 
---print(c.multipleColors({{"<RED>","red"},{"<GREEN>","green"}}, " "))
+print(c.multipleColors({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, ""))
 
 c.terminalColor("yellOw")

@@ -95,6 +95,9 @@ lightBlue = function(s)
 end,
 
 multipleColors = function(t, c)
+   if c == nil then
+      c = " "
+   end
    if type(t) == "table" then
       if type(c) == "string" then
 	 local st = ""

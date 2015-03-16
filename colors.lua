@@ -109,5 +109,5 @@ print(color("<WHITE>", "white"))
 print(multipleColors({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " "))
 t = {"I","just printed", "a table", "in RED!"}
 print(red(t))
-print("Your terminal will now turn yellow.")
+print("Your terminal will now turn yellow...")
 terminalColor("yellow")

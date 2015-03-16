@@ -6,7 +6,6 @@ colors["yellow"] = Yellow
 colors["blue"] = Blue
 colors["purple"] = Purple
 colors["lightblue"] = LightBlue
-colors[0] = ""
 
 function availableColors() return "red, green, yellow, blue, purple, lightblue" end
 

@@ -4,7 +4,8 @@ function red(s)
    if type(s) == "string" or type(s) == "number" then
       return "\x1b[0;31m" .. s .. "\x1b[0m"
    end
-   error("string or number expected, got " .. type(s))
+   return "\x1b[0;31m" .. tostring(s) .. "\x1b[0m"
+   error("string expected, got " .. type(s))
 end
 
 function greenPrint(s) print(green(s)) end
@@ -106,8 +107,6 @@ colorPrint("C", "red"); colorPrint("O", "green"); colorPrint("L", "yellow"); col
 print(colorText("C", "red") .. colorText("O", "green") .. colorText("L", "yellow") .. colorText("O", "blue") .. colorText("R", "purple") .. colorText("S", "lightBlue"))
 multipleColorsPrint({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " ")
 print(multipleColors({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " "))
-yellowPrint(10)
-bluePrint(10)
-purplePrint(10)
-lightBluePrint(10)
+t = {}
+redPrint(t)
 terminalColor("green")

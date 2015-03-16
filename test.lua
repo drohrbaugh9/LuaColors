@@ -1,5 +1,5 @@
 c = require("colors")
-c.initializeColorsTable()
+c.initialize()
 
 --[[print(c.red("<RED>"))
 print(c.green("<GREEN>"))
@@ -8,4 +8,6 @@ print(c.blue("<BLUE"))
 print(c.purple("<PURPLE>"))
 print(c.lightBlue("<LIGHTBLUE>"))]]
 
-print(c.multipleColors({{"<RED>","red"},{"<GREEN>","green"}}, " "))
+--print(c.multipleColors({{"<RED>","red"},{"<GREEN>","green"}}, " "))
+
+c.terminalColor("yellOw")

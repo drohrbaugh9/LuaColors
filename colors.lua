@@ -20,7 +20,7 @@ values = function(t)
   return function ()  i = i + 1; return t[i] end
 end,
 
-initializeColorsTable = function()
+initialize = function()
    local c = {}
    c["red"] = colorsLibrary.Red
    c["green"] = colorsLibrary.Green

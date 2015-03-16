@@ -1,11 +1,5 @@
 Red = "\x1b[0;31m" Green = "\x1b[0;32m" Yellow = "\x1b[0;33m" Blue = "\x1b[0;34m" Purple = "\x1b[0;35m" LightBlue = "\x1b[0;36m"
-colors = {}
-colors["red"] = Red
-colors["green"] = Green
-colors["yellow"] = Yellow
-colors["blue"] = Blue
-colors["purple"] = Purple
-colors["lightblue"] = LightBlue
+colors = {}; colors["red"] = Red; colors["green"] = Green; colors["yellow"] = Yellow; colors["blue"] = Blue; colors["purple"] = Purple; colors["lightblue"] = LightBlue
 
 function availableColors() return "red, green, yellow, blue, purple, lightblue" end
 

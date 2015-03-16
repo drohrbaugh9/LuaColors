@@ -107,6 +107,7 @@ print(color("C", "red") .. color("O", "green") .. color("L", "yellow") .. color(
 print(color("<WHITE>", "white"))
 --multipleColorsPrint({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " ")
 print(multipleColors({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " "))
-t = {"<RED>","more red"}
+t = {"I","just printed", "a table", "in RED!"}
 print(red(t))
-terminalColor("green")
+print("Your terminal will now turn yellow.")
+terminalColor("yellow")

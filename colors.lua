@@ -1,6 +1,3 @@
-c = {}
-c["red"] = Red; colors["green"] = Green; colors["yellow"] = Yellow; colors["blue"] = Blue; colors["purple"] = Purple; colors["lightblue"] = LightBlue
-
 colorsLibrary = {
 
 Red = "\x1b[0;31m",
@@ -9,15 +6,29 @@ Yellow = "\x1b[0;33m",
 Blue = "\x1b[0;34m",
 Purple = "\x1b[0;35m",
 LightBlue = "\x1b[0;36m",
-colors = c,
 
-availableColors = function()
-   return "red, green, yellow, blue, purple, lightblue"
+colors = {},
+
+availableColors = "red, green, yellow, blue, purple, lightblue",
+
+getAvailableColors = function()
+   return red("red, ") .. green("green, ") .. yellow("yellow, ") .. blue("blue, ") .. purple("purple, ") .. lightBlue("lightblue")
 end,
 
 values = function(t)
   local i = 0
   return function ()  i = i + 1; return t[i] end
+end,
+
+initializeColorsTable = function()
+   local c = {}
+   c["red"] = colorsLibrary.Red
+   c["green"] = colorsLibrary.Green
+   c["yellow"] = colorsLibrary.Yellow
+   c["blue"] = colorsLibrary.Blue
+   c["purple"] = colorsLibrary.Purple
+   c["lightblue"] = colorsLibrary.LightBlue
+   colorsLibrary.colors = c
 end,
 
 --function redPrint(s) print(red(s)) end
@@ -41,54 +52,54 @@ color = function(s, c)
       error("string expected, got " .. type(c))
    end
    c = string.lower(c)
-   if string.find(availableColors(), c) == nil then
+   if string.find(colorsLibrary.availableColors, c) == nil then
       if type(s) == "string" then return s end
       error("string expected, got " .. type(s))
    end
    if type(s) == "string" or type(s) == "number" then
-      return colors[c] .. s .. "\x1b[0m"
+      return colorsLibrary.colors[c] .. s .. "\x1b[0m"
    elseif type(s) == "table" then
       local st = ""
-      for v in values(t) do
-	 st = st .. colors[c] .. v .. "\x1b[0m "
+      for v in colorsLibrary.values(t) do
+	 st = st .. colorsLibrary.colors[c] .. v .. "\x1b[0m "
       end
       return st
    else
-      return colors[c] .. tostring(s) .. "\x1b[0m"
+      return colorsLibrary.colors[c] .. tostring(s) .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end,
 
 red = function(s)
-   return color(s, "red")
+   return colorsLibrary.color(s, "red")
 end,
 
 green = function(s)
-   return color(s, "green")
+   return colorsLibrary.color(s, "green")
 end,
 
 yellow = function(s)
-   return color(s, "yellow")
+   return colorsLibrary.color(s, "yellow")
 end,
 
 blue = function(s)
-   return color(s, "blue")
+   return colorsLibrary.color(s, "blue")
 end,
 
 purple = function(s)
-   return color(s, "purple")
+   return colorsLibrary.color(s, "purple")
 end,
 
 lightBlue = function(s)
-   return color(s, "lightblue")
+   return colorsLibrary.color(s, "lightblue")
 end,
 
 multipleColors = function(t, c)
    if type(t) == "table" then
       if type(c) == "string" then
 	 local st = ""
-	 for s in values(t) do
-	    st = st .. color(s[1],s[2]) .. c
+	 for s in colorsLibrary.values(t) do
+	    st = st .. colorsLibrary.color(s[1],s[2]) .. c
 	 end
 	 return st
       end
@@ -100,23 +111,16 @@ end,
 terminalColor = function(c)
    if type(c) == "string" then
       c = string.lower(c)
-      if c == "red" then print(Red) end
-      if c == "green" then print(Green) end
-      if c == "yellow" then print(Yellow) end
-      if c == "blue" then print(Blue) end
-      if c == "purple" then print(Purple) end
-      if c == "lightblue"then print(LightBlue) end
+      if c == "red" then io.write(colorsLibrary.Red) end
+      if c == "green" then io.write(colorsLibrary.Green) end
+      if c == "yellow" then io.write(colorsLibrary.Yellow) end
+      if c == "blue" then io.write(colorsLibrary.Blue) end
+      if c == "purple" then io.write(colorsLibrary.Purple) end
+      if c == "lightblue"then io.write(colorsLibrary.LightBlue) end
       return
    end
    error("string expected, got " .. type(c))
 end
 }
-
---[[colorsLibrary[7]["red"] = colorsLibrary[1]
-colorsLibrary[7]["green"] = colorsLibrary[2]
-colorsLibrary[7]["yellow"] = colorsLibrary[3]
-colorsLibrary[7]["blue"] = colorsLibrary[4]
-colorsLibrary[7]["purple"] = colorsLibrary[5]
-colorsLibrary[7]["lightblue"] = colorsLibrary[6]]
 
 return colorsLibrary

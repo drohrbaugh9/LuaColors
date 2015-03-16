@@ -1,1 +1,5 @@
-print("\x1b[1;32m<IMPORTANT TEXT>\x1b[0m")
+colors = require("colors")
+colors.initializeColorsTable()
+print(colors.red("<RED>"))
+print(colors.green("<GREEN>"))
+print(colors.yellow("<YELLOW>"))

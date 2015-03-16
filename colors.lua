@@ -37,62 +37,34 @@ end
 --function greenPrint(s) print(green(s)) end
 
 function green(s)
-   if type(s) == "string" or type(s) == "number" then
-      return Green .. s .. "\x1b[0m"
-   end
-   error("string expected, got " .. type(s))
+   return color(s, "green")
 end
 
 --function yellowPrint(s) print(yellow(s)) end
 
 function yellow(s)
-   if type(s) == "string" or type(s) == "number" then
-      return Yellow .. s .. "\x1b[0m"
-   end
-   error("string expected, got " .. type(s))
+   return color(s, "yellow")
 end
 
 --function bluePrint(s) print(blue(s)) end
 
 function blue(s)
-   if type(s) == "string" or type(s) == "number" then
-      return Blue .. s .. "\x1b[0m"
-   end
-   error("string expected, got " .. type(s))
+   return color(s, "blue")
 end
 
 --function purplePrint(s) print(purple(s)) end
 
 function purple(s)
-   if type(s) == "string" or type(s) == "number" then
-      return Purple .. s .. "\x1b[0m"
-   end
-   error("string expected, got " .. type(s))
+   return color(s, "purple")
 end
 
 --function lightBluePrint(s) print(lightBlue(s)) end
 
 function lightBlue(s)
-   if type(s) == "string" or type(s) == "number" then
-      return LightBlue .. s .. "\x1b[0m"
-   end
-   error("string expected, got " .. type(s))
+   return color(s, "lightblue")
 end
 
---function colorPrint(s, c) print(colorText(s, c)) end
-
-function colorText(s, c)
-   if type(c) == "string" then
-      c = string.lower(c)
-      if c == "red" then return red(s) end
-      if c == "green" then return green(s) end
-      if c == "yellow" then  return yellow(s) end
-      if c == "blue" then return blue(s) end
-      if c == "purple" then return purple(s) end
-      if c == "lightblue" then return lightBlue(s) end
-      return s
-   end
-end
+--function colorPrint(s, c) print(color(s, c)) end
 
 --function multipleColorsPrint(t, c) print(multipleColors(t, c)) end
 

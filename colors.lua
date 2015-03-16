@@ -1,12 +1,24 @@
-Red = "\x1b[0;31m" Green = "\x1b[0;32m" Yellow = "\x1b[0;33m" Blue = "\x1b[0;34m" Purple = "\x1b[0;35m" LightBlue = "\x1b[0;36m"
-colors = {}; colors["red"] = Red; colors["green"] = Green; colors["yellow"] = Yellow; colors["blue"] = Blue; colors["purple"] = Purple; colors["lightblue"] = LightBlue
+c = {}
+c["red"] = Red; colors["green"] = Green; colors["yellow"] = Yellow; colors["blue"] = Blue; colors["purple"] = Purple; colors["lightblue"] = LightBlue
 
-function availableColors() return "red, green, yellow, blue, purple, lightblue" end
+colorsLibrary = {
 
-function values(t)
+Red = "\x1b[0;31m",
+Green = "\x1b[0;32m",
+Yellow = "\x1b[0;33m",
+Blue = "\x1b[0;34m",
+Purple = "\x1b[0;35m",
+LightBlue = "\x1b[0;36m",
+colors = c,
+
+availableColors = function()
+   return "red, green, yellow, blue, purple, lightblue"
+end,
+
+values = function(t)
   local i = 0
   return function ()  i = i + 1; return t[i] end
-end    
+end,
 
 --function redPrint(s) print(red(s)) end
 
@@ -24,7 +36,7 @@ end
 
 --function multipleColorsPrint(t, c) print(multipleColors(t, c)) end
 
-function color(s, c)
+color = function(s, c)
    if not type(c) == "string" then
       error("string expected, got " .. type(c))
    end
@@ -45,33 +57,33 @@ function color(s, c)
       return colors[c] .. tostring(s) .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
-end
+end,
 
-function red(s)
+red = function(s)
    return color(s, "red")
-end
+end,
 
-function green(s)
+green = function(s)
    return color(s, "green")
-end
+end,
 
-function yellow(s)
+yellow = function(s)
    return color(s, "yellow")
-end
+end,
 
-function blue(s)
+blue = function(s)
    return color(s, "blue")
-end
+end,
 
-function purple(s)
+purple = function(s)
    return color(s, "purple")
-end
+end,
 
-function lightBlue(s)
+lightBlue = function(s)
    return color(s, "lightblue")
-end
+end,
 
-function multipleColors(t, c)
+multipleColors = function(t, c)
    if type(t) == "table" then
       if type(c) == "string" then
 	 local st = ""
@@ -83,9 +95,9 @@ function multipleColors(t, c)
       error("string expected, got " .. type(c))
    end
    error("table expected, got " .. type(t))
-end
+end,
 
-function terminalColor(c)
+terminalColor = function(c)
    if type(c) == "string" then
       c = string.lower(c)
       if c == "red" then print(Red) end
@@ -98,16 +110,13 @@ function terminalColor(c)
    end
    error("string expected, got " .. type(c))
 end
+}
 
---examples
---redPrint("C"); greenPrint("O"); yellowPrint("L"); bluePrint("O"); purplePrint("R"); lightBluePrint("S");
-print(red("C") .. green("O") .. yellow("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")
---colorPrint("C", "red"); colorPrint("O", "green"); colorPrint("L", "yellow"); colorPrint("O", "blue"); colorPrint("R", "purple"); colorPrint("S", "lightBlue");
-print(color("C", "red") .. color("O", "green") .. color("L", "yellow") .. color("O", "blue") .. color("R", "purple") .. color("S", "lightBlue"))
-print(color("<WHITE>", "white"))
---multipleColorsPrint({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " ")
-print(multipleColors({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " "))
-t = {"I","just printed", "a table", "in RED!"}
-print(red(t))
-print("Your terminal will now turn yellow...")
-terminalColor("yellow")
+--[[colorsLibrary[7]["red"] = colorsLibrary[1]
+colorsLibrary[7]["green"] = colorsLibrary[2]
+colorsLibrary[7]["yellow"] = colorsLibrary[3]
+colorsLibrary[7]["blue"] = colorsLibrary[4]
+colorsLibrary[7]["purple"] = colorsLibrary[5]
+colorsLibrary[7]["lightblue"] = colorsLibrary[6]]
+
+return colorsLibrary

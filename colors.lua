@@ -1,15 +1,46 @@
+Red = "\x1b[0;31m" Green = "\x1b[0;32m" Yellow = "\x1b[0;33m" Blue = "\x1b[0;34m" Purple = "\x1b[0;35m" LightBlue = "\x1b[0;36m"
+colors = {}
+colors["red"] = Red
+colors["green"] = Green
+colors["yellow"] = Yellow
+colors["blue"] = Blue
+colors["purple"] = Purple
+colors["lightblue"] = LightBlue
+
 function availableColors() print("red, green, yellow, blue, purple, light blue") end
 
-function redPrint(s) print(red(s)) end
+function color(s, c) 
+   if not type(c) == "string" then
+      error("string expected, got " .. type(c))
+   end
+   c = string.lower(c)
+   if type(s) == "string" or type(s) == "number" then
+      return colors[c] .. s .. "\x1b[0m"
+   elseif type(s) == "table" then
+      st = ""
+      for v in values(t) do
+	 st = st .. colors[c] .. v .. "\x1b[0m "
+      end
+      return st
+   else
+      return colors[c] .. tostring(s) .. "\x1b[0m"
+   end
+   error("string expected, got " .. type(s))
+end
+
+--function redPrint(s) print(red(s)) end
 
 function red(s)
    if type(s) == "string" or type(s) == "number" then
-      return "\x1b[0;31m" .. s .. "\x1b[0m"
+      return Red .. s .. "\x1b[0m"
    elseif type(s) == "table" then
-      st = unpack(s)
-      return "\x1b[0;31m" .. st .. "\x1b[0m"
+      st = ""
+      for v in values(t) do
+	 st = st .. Red .. v .. "\x1b[0m "
+      end
+      return st
    else
-      return "\x1b[0;31m" .. tostring(s) .. "\x1b[0m"
+      return Red .. tostring(s) .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
@@ -18,7 +49,7 @@ end
 
 function green(s)
    if type(s) == "string" or type(s) == "number" then
-      return "\x1b[0;32m" .. s .. "\x1b[0m"
+      return Green .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
@@ -27,7 +58,7 @@ end
 
 function yellow(s)
    if type(s) == "string" or type(s) == "number" then
-      return "\x1b[0;33m" .. s .. "\x1b[0m"
+      return Yellow .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
@@ -36,7 +67,7 @@ end
 
 function blue(s)
    if type(s) == "string" or type(s) == "number" then
-      return "\x1b[0;34m" .. s .. "\x1b[0m"
+      return Blue .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
@@ -45,7 +76,7 @@ end
 
 function purple(s)
    if type(s) == "string" or type(s) == "number" then
-      return "\x1b[0;35m" .. s .. "\x1b[0m"
+      return Purple .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
@@ -54,7 +85,7 @@ end
 
 function lightBlue(s)
    if type(s) == "string" or type(s) == "number" then
-      return "\x1b[0;36m" .. s .. "\x1b[0m"
+      return LightBlue .. s .. "\x1b[0m"
    end
    error("string expected, got " .. type(s))
 end
@@ -98,12 +129,12 @@ end
 function terminalColor(c)
    if type(c) == "string" then
       c = string.lower(c)
-      if c == "red" then print("\x1b[0;31m") end
-      if c == "green" then print("\x1b[0;32m") end
-      if c == "yellow" then print("\x1b[0;33m") end
-      if c == "blue" then print("\x1b[0;34m") end
-      if c == "purple" then print("\x1b[0;35m") end
-      if c == "lightblue"then print("\x1b[0;36m") end
+      if c == "red" then print(Red) end
+      if c == "green" then print(Green) end
+      if c == "yellow" then print(Yellow) end
+      if c == "blue" then print(Blue) end
+      if c == "purple" then print(Purple) end
+      if c == "lightblue"then print(LightBlue) end
       return
    end
    error("string expected, got " .. type(c))
@@ -114,8 +145,9 @@ end
 print(red("C") .. green("O") .. yellow("L") .. blue("O") .. purple("R") .. lightBlue("S") .. "\x1b[;034m")
 --colorPrint("C", "red"); colorPrint("O", "green"); colorPrint("L", "yellow"); colorPrint("O", "blue"); colorPrint("R", "purple"); colorPrint("S", "lightBlue");
 print(colorText("C", "red") .. colorText("O", "green") .. colorText("L", "yellow") .. colorText("O", "blue") .. colorText("R", "purple") .. colorText("S", "lightBlue"))
+print(colorText("<WHITE>", "white"))
 --multipleColorsPrint({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " ")
 print(multipleColors({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"R","purple"},{"S","lightBlue"}}, " "))
 t = {"<RED>","more red"}
-redPrint(t)
+print(red(t))
 terminalColor("green")

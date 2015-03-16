@@ -31,18 +31,7 @@ end
 --function redPrint(s) print(red(s)) end
 
 function red(s)
-   if type(s) == "string" or type(s) == "number" then
-      return Red .. s .. "\x1b[0m"
-   elseif type(s) == "table" then
-      st = ""
-      for v in values(t) do
-	 st = st .. Red .. v .. "\x1b[0m "
-      end
-      return st
-   else
-      return Red .. tostring(s) .. "\x1b[0m"
-   end
-   error("string expected, got " .. type(s))
+   return color(s, "red")
 end
 
 --function greenPrint(s) print(green(s)) end

@@ -1,11 +1,11 @@
 colorsLibrary = {
 
-_RED = "\x1b[0;31m", _GREEN = "\x1b[0;32m", _YELLOW = "\x1b[0;33m", _BLUE = "\x1b[0;34m", _PURPLE = "\x1b[0;35m", _CYAN = "\x1b[0;36m", _COLOREND = "\x1b[0m",
+_RED = "\x1b[0;31m", _GREEN = "\x1b[0;32m", _YELLOW = "\x1b[0;33m", _BLUE = "\x1b[0;34m", _PURPLE = "\x1b[0;35m", _CYAN = "\x1b[0;36m", _WHITE = "\x1b[0;37m", _COLOREND = "\x1b[0m",
 
-colors = {}, availableColors = "red, green, yellow, blue, purple, cyan",
+colors = {}, availableColors = "black, red, green, yellow, blue, purple, cyan, white",
 
 getAvailableColors = function()
-   return "The available colors are " .. colorsLibrary.red("red") .. ", " .. colorsLibrary.green("green") .. ", " .. colorsLibrary.yellow("yellow") .. ", " .. colorsLibrary.blue("blue") .. ", " .. colorsLibrary.purple("purple") .. ", and " .. colorsLibrary.cyan("cyan") .. "."
+   return "The available colors are \x1b[0;47;30mblack\x1b[0m " .. colorsLibrary.red("red") .. ", " .. colorsLibrary.green("green") .. ", " .. colorsLibrary.yellow("yellow") .. ", " .. colorsLibrary.blue("blue") .. ", " .. colorsLibrary.purple("purple") .. ", " .. colorsLibrary.cyan("cyan") .. ", and white."
 end,
 
 values = function(t)

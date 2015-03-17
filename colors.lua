@@ -143,8 +143,6 @@ c = {
   end,
 
   colorBand = function(bandColor, bandLength)
-     --GUI Terminal is 80 characters wide
-     --non-GUI Terminal is 200 characters wide, 56 lines tall
      if type(bandColor) == "string" then
       local band = ""
       for i = 1, bandLength do

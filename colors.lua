@@ -132,7 +132,7 @@ c = {
     if type(bandColor) == "string" then
       if type(errorMessage) == "string" then
 	if type(lineNumber) == "number" or type(lineNumber) == "nil" then
-	  c.colorBand("red", 80)
+	  c.colorBand("red", 200)
 	  error(errorMessage, lineNumber)
         end
         error("number expected, got " .. type(lineNumber))
@@ -146,7 +146,7 @@ c = {
      if type(bandColor) == "string" then
       local band = ""
       for i = 1, bandLength do
-        band = band .. "_"
+        band = band .. " "
       end
       io.write(c.color(band, bandColor, bandColor))
     else
@@ -154,17 +154,18 @@ c = {
     end
   end
 
-  ---[[
+  --[[
   terminalColor = function(color)
     if type(color) == "string" then
       color = string.lower(color)
-      if color == "red" then io.write(c._COLORSTART .. c._BLACKBACK .. c._REDTEXT) end
-      if color == "green" then io.write(c._COLORSTART .. c._BLACKBACK .. c._GREENTEXT) end
-      if color == "yellow" then io.write(c._COLORSTART .. c._BLACKBACK .. c._YELLOWTEXT) end
-      if color == "blue" then io.write(c._COLORSTART .. c._BLACKBACK .. c._BLUETEXT) end
-      if color == "purple" then io.write(c._COLORSTART .. c._BLACKBACK .. c._PURPLETEXT) end
-      if color == "cyan" then io.write(c._COLORSTART .. c._BLACKBACK .. c._CYANTEXT) end
-      return
+      if color == "black" then io.write(c._COLORSTART .. c._BLACKBACK .. c._BLACKTEXT)
+      elseif color == "red" then io.write(c._COLORSTART .. c._BLACKBACK .. c._REDTEXT)
+      elseif color == "green" then io.write(c._COLORSTART .. c._BLACKBACK .. c._GREENTEXT)
+      elseif color == "yellow" then io.write(c._COLORSTART .. c._BLACKBACK .. c._YELLOWTEXT)
+      elseif color == "blue" then io.write(c._COLORSTART .. c._BLACKBACK .. c._BLUETEXT)
+      elseif color == "purple" then io.write(c._COLORSTART .. c._BLACKBACK .. c._PURPLETEXT)
+      elseif color == "cyan" then io.write(c._COLORSTART .. c._BLACKBACK .. c._CYANTEXT)
+      else return
     end
     error("string expected, got " .. type(c))
   end--]]

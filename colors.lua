@@ -1,4 +1,4 @@
-colorsLibrary = {
+c = {
 
   _COLORSTART = "\x1b[",
   _BLACKBACK = "40;",
@@ -24,7 +24,7 @@ colorsLibrary = {
   availableColors = "black,red,green,yellow,blue,purple,cyan,white",
 
   getAvailableColors = function()
-    return "The available colors are \x1b[0;47;30mblack\x1b[0m " .. colorsLibrary.red("red", " ") .. ", " .. colorsLibrary.green("green", " ") .. ", " .. colorsLibrary.yellow("yellow", " ") .. ", " .. colorsLibrary.blue("blue", " ") .. ", " .. colorsLibrary.purple("purple", " ") .. ", " .. colorsLibrary.cyan("cyan", " ") .. ", and white."
+    return "The available colors are \x1b[0;47;30mblack\x1b[0m " .. c.red("red", " ") .. ", " .. c.green("green", " ") .. ", " .. c.yellow("yellow", " ") .. ", " .. c.blue("blue", " ") .. ", " .. c.purple("purple", " ") .. ", " .. c.cyan("cyan", " ") .. ", and white."
   end,
 
   values = function(t)
@@ -33,36 +33,36 @@ colorsLibrary = {
   end,
 
   initialize = function()
-    local c = {}
-    c["blackback"] = colorsLibrary._BLACKBACK
-    c["redback"] = colorsLibrary._REDBACK
-    c["greenback"] = colorsLibrary._GREENBACK
-    c["yellowback"] = colorsLibrary._YELLOWBACK
-    c["blueback"] = colorsLibrary._BLUEBACK
-    c["purpleback"] = colorsLibrary._PURPLEBACK
-    c["cyanback"] = colorsLibrary._CYANBACK
-    c["whiteback"] = colorsLibrary._WHITEBACK
-    c["blacktext"] = colorsLibrary._BLACKTEXT
-    c["redtext"] = colorsLibrary._REDTEXT
-    c["greentext"] = colorsLibrary._GREENTEXT
-    c["yellowtext"] = colorsLibrary._YELLOWTEXT
-    c["bluetext"] = colorsLibrary._BLUETEXT
-    c["purpletext"] = colorsLibrary._PURPLETEXT
-    c["cyantext"] = colorsLibrary._CYANTEXT
-    c["whitetext"] = colorsLibrary._WHITETEXT
-    colorsLibrary.colors = c
+    local ct = {}
+    ct["blackback"] = c._BLACKBACK
+    ct["redback"] = c._REDBACK
+    ct["greenback"] = c._GREENBACK
+    ct["yellowback"] = c._YELLOWBACK
+    ct["blueback"] = c._BLUEBACK
+    ct["purpleback"] = c._PURPLEBACK
+    ct["cyanback"] = c._CYANBACK
+    ct["whiteback"] = c._WHITEBACK
+    ct["blacktext"] = c._BLACKTEXT
+    ct["redtext"] = c._REDTEXT
+    ct["greentext"] = c._GREENTEXT
+    ct["yellowtext"] = c._YELLOWTEXT
+    ct["bluetext"] = c._BLUETEXT
+    ct["purpletext"] = c._PURPLETEXT
+    ct["cyantext"] = c._CYANTEXT
+    ct["whitetext"] = c._WHITETEXT
+    c.colors = ct
   end,
 
-  color = function(s, c, bc)
+  color = function(s, color, bc)
 
-    if not type(c) == "string" then
-      error("string expected, got " .. type(c))
+    if not type(color) == "string" then
+      error("string expected, got " .. type(color))
     end
 
-    if c == "" then c = " " end
+    if color == "" then color = " " end
     if bc == "" then bc = " " end
 
-    c = string.lower(c)
+    color = string.lower(color)
     local textColor = ""
 
     if not type(bc) == "string" then
@@ -72,60 +72,71 @@ colorsLibrary = {
     bc = string.lower(bc)
     local backColor = ""
 
-    if string.find(colorsLibrary.availableColors, c) == nil or c == "," then
+    if string.find(c.availableColors, color) == nil or color == "," then
       textColor = "0m"
     else
-      textColor = colorsLibrary.colors[c .. "text"]
+      textColor = c.colors[color .. "text"]
     end
 
-    if string.find(colorsLibrary.availableColors, bc) == nil or c == "," then
+    if string.find(c.availableColors, bc) == nil or bc == "," then
       backColor = "0;"
     else
-      backColor = colorsLibrary.colors[bc .. "back"]
+      backColor = c.colors[bc .. "back"]
     end
 
     if type(s) == "string" or type(s) == "number" then
-      return colorsLibrary._COLORSTART .. backColor .. textColor .. s .. colorsLibrary._COLOREND
+      return c._COLORSTART .. backColor .. textColor .. s .. c._COLOREND
     elseif type(s) == "table" then
       local st = ""
-      for v in colorsLibrary.values(t) do
-        st = st .. colorsLibrary._COLORSTART .. backColor .. textColor .. v .. colorsLibrary._COLOREND .. " "
+      for v in c.values(t) do
+        st = st .. c._COLORSTART .. backColor .. textColor .. v .. c._COLOREND .. " "
       end
       return st
     else
-      return colorsLibrary._COLORSTART .. backColor .. textColor .. tostring(s) .. colorLibrary._COLOREND
+      return c._COLORSTART .. backColor .. textColor .. tostring(s) .. colorLibrary._COLOREND
     end
 
     error("string expected, got " .. type(s))
   end,
 
-  red = function(s) return colorsLibrary.color(s, "red", "") end,
+  red = function(s) return c.color(s, "red", "") end,
 
-  green = function(s) return colorsLibrary.color(s, "green", "") end,
+  green = function(s) return c.color(s, "green", "") end,
 
-  yellow = function(s) return colorsLibrary.color(s, "yellow", "") end,
+  yellow = function(s) return c.color(s, "yellow", "") end,
 
-  blue = function(s) return colorsLibrary.color(s, "blue", "") end,
+  blue = function(s) return c.color(s, "blue", "") end,
 
-  purple = function(s) return colorsLibrary.color(s, "purple", "") end,
+  purple = function(s) return c.color(s, "purple", "") end,
 
-  cyan = function(s) return colorsLibrary.color(s, "cyan", "") end,
+  cyan = function(s) return c.color(s, "cyan", "") end,
 
-  multipleColors = function(t, c)
-    if c == nil then
-      c = " "
+  multipleColors = function(t, char)
+    if char == nil then
+      char = " "
     end
     if type(t) == "table" then
-      if type(c) == "string" then
+      if type(char) == "string" then
         local st = ""
-        for s in colorsLibrary.values(t) do
-          st = st .. colorsLibrary.color(s[1],s[2],s[3]) .. c
+        for s in c.values(t) do
+          st = st .. c.color(s[1],s[2],s[3]) .. char
         end
         return st
       end
-      error("string expected, got " .. type(c))
+      error("string expected, got " .. type(char))
     end
     error("table expected, got " .. type(t))
+  end,
+
+  colorError = function(s, errorMessage, lineNumber)
+    if type(s) == "string" then
+      if type(errorMessage) == "string" then
+        if type(l) == "number" then
+          io.write(c._COLORSTART .. c._REDBACK .. c._BLACKTEXT .. s .. c._COLOREND)
+          error(errorMessage, lineNumber)
+        end
+      end
+    end
   end--,
 
   --[[
@@ -144,4 +155,4 @@ colorsLibrary = {
   end--]]
 }
 
-return colorsLibrary
+return c

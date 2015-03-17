@@ -128,16 +128,33 @@ c = {
     error("table expected, got " .. type(t))
   end,
 
-  colorError = function(s, errorMessage, lineNumber)
-    if type(s) == "string" then
+  colorError = function(errorMessage, lineNumber, bandColor)
+    if type(bandColor) == "string" then
       if type(errorMessage) == "string" then
-        if type(l) == "number" then
-          io.write(c._COLORSTART .. c._REDBACK .. c._BLACKTEXT .. s .. c._COLOREND)
-          error(errorMessage, lineNumber)
+	if type(lineNumber) == "number" or type(lineNumber) == "nil" then
+	  c.colorBand("red")
+	  error(errorMessage, lineNumber)
         end
+        error("number expected, got " .. type(lineNumber))
       end
+      error("string expected, got " .. type(errorMessage))
     end
-  end--,
+    error("string expected, got " .. type(bandColor))
+  end,
+
+  colorBand = function(bandColor, bandLength)
+     --GUI Terminal is 80 characters wide
+     --non-GUI Terminal is 200 characters wide
+     if type(bandColor) == "string" then
+      local band = ""
+      for i = 1, bandLength do
+        band = band .. "_"
+      end
+      io.write(c.color(band, bandColor, bandColor))
+    else
+      error("string expected, got " .. type(bandColor))
+    end
+  end
 
   --[[
   terminalColor = function(c)

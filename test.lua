@@ -24,5 +24,5 @@ print(c.multipleColors({{"C","red",bc},{"O","green",bc},{"L","yellow",bc},{"O","
 bc = "white"
 print(c.multipleColors({{"C","red",bc},{"O","green",bc},{"L","yellow",bc},{"O","blue",bc},{"R","purple",bc},{"S","cyan",bc}},""))
 
-print(c.color("________________________________________________________________________________________________________________________________________________________________________________________________________", "red", "red"))
-error("this error is a test")
+c.colorError("this error is a test", nil, "red")
+--error("this error is a test")

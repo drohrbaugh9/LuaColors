@@ -5,14 +5,15 @@ Green = "\x1b[0;32m",
 Yellow = "\x1b[0;33m",
 Blue = "\x1b[0;34m",
 Purple = "\x1b[0;35m",
-LightBlue = "\x1b[0;36m",
+Cyan = "\x1b[0;36m",
+colorEnd = "\x1b[0m",
 
 colors = {},
 
-availableColors = "red, green, yellow, blue, purple, lightblue",
+availableColors = "red, green, yellow, blue, purple, cyan",
 
 getAvailableColors = function()
-   return colorsLibrary.red("red, ") .. colorsLibrary.green("green, ") .. colorsLibrary.yellow("yellow, ") .. colorsLibrary.blue("blue, ") .. colorsLibrary.purple("purple, ") .. colorsLibrary.lightBlue("lightblue")
+   return "The available colors are " .. colorsLibrary.red("red") .. ", " .. colorsLibrary.green("green") .. ", " .. colorsLibrary.yellow("yellow") .. ", " .. colorsLibrary.blue("blue") .. ", " .. colorsLibrary.purple("purple") .. ", and " .. colorsLibrary.cyan("cyan") .. "."
 end,
 
 values = function(t)
@@ -27,7 +28,7 @@ initialize = function()
    c["yellow"] = colorsLibrary.Yellow
    c["blue"] = colorsLibrary.Blue
    c["purple"] = colorsLibrary.Purple
-   c["lightblue"] = colorsLibrary.LightBlue
+   c["cyan"] = colorsLibrary.Cyan
    colorsLibrary.colors = c
 end,
 
@@ -90,8 +91,8 @@ purple = function(s)
    return colorsLibrary.color(s, "purple")
 end,
 
-lightBlue = function(s)
-   return colorsLibrary.color(s, "lightblue")
+cyan = function(s)
+   return colorsLibrary.color(s, "cyan")
 end,
 
 multipleColors = function(t, c)
@@ -119,7 +120,7 @@ terminalColor = function(c)
       if c == "yellow" then io.write(colorsLibrary.Yellow) end
       if c == "blue" then io.write(colorsLibrary.Blue) end
       if c == "purple" then io.write(colorsLibrary.Purple) end
-      if c == "lightblue"then io.write(colorsLibrary.LightBlue) end
+      if c == "cyan" then io.write(colorsLibrary.Cyan) end
       return
    end
    error("string expected, got " .. type(c))

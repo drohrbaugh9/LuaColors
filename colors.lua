@@ -6,7 +6,7 @@ _YELLOW = "\x1b[0;33m",
 _BLUE = "\x1b[0;34m",
 _PURPLE = "\x1b[0;35m",
 _CYAN = "\x1b[0;36m",
-colorEnd = "\x1b[0m",
+_COLOREND = "\x1b[0m",
 
 colors = {},
 
@@ -58,15 +58,15 @@ color = function(s, c)
       error("string expected, got " .. type(s))
    end
    if type(s) == "string" or type(s) == "number" then
-      return colorsLibrary.colors[c] .. s .. "\x1b[0m"
+      return colorsLibrary.colors[c] .. s .. colorsLibrary._COLOREND
    elseif type(s) == "table" then
       local st = ""
       for v in colorsLibrary.values(t) do
-	 st = st .. colorsLibrary.colors[c] .. v .. "\x1b[0m "
+	 st = st .. colorsLibrary.colors[c] .. v .. colorsLibrary._COLOREND .. " "
       end
       return st
    else
-      return colorsLibrary.colors[c] .. tostring(s) .. "\x1b[0m"
+      return colorsLibrary.colors[c] .. tostring(s) .. colorLibrary._COLOREND
    end
    error("string expected, got " .. type(s))
 end,

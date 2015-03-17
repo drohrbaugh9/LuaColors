@@ -1,11 +1,11 @@
 colorsLibrary = {
 
-Red = "\x1b[0;31m",
-Green = "\x1b[0;32m",
-Yellow = "\x1b[0;33m",
-Blue = "\x1b[0;34m",
-Purple = "\x1b[0;35m",
-Cyan = "\x1b[0;36m",
+_RED = "\x1b[0;31m",
+_GREEN = "\x1b[0;32m",
+_YELLOW = "\x1b[0;33m",
+_BLUE = "\x1b[0;34m",
+_PURPLE = "\x1b[0;35m",
+_CYAN = "\x1b[0;36m",
 colorEnd = "\x1b[0m",
 
 colors = {},
@@ -23,12 +23,12 @@ end,
 
 initialize = function()
    local c = {}
-   c["red"] = colorsLibrary.Red
-   c["green"] = colorsLibrary.Green
-   c["yellow"] = colorsLibrary.Yellow
-   c["blue"] = colorsLibrary.Blue
-   c["purple"] = colorsLibrary.Purple
-   c["cyan"] = colorsLibrary.Cyan
+   c["red"] = colorsLibrary._RED
+   c["green"] = colorsLibrary._GREEN
+   c["yellow"] = colorsLibrary._YELLOW
+   c["blue"] = colorsLibrary._BLUE
+   c["purple"] = colorsLibrary._PURPLE
+   c["cyan"] = colorsLibrary._CYAN
    colorsLibrary.colors = c
 end,
 
@@ -115,12 +115,12 @@ end,
 terminalColor = function(c)
    if type(c) == "string" then
       c = string.lower(c)
-      if c == "red" then io.write(colorsLibrary.Red) end
-      if c == "green" then io.write(colorsLibrary.Green) end
-      if c == "yellow" then io.write(colorsLibrary.Yellow) end
-      if c == "blue" then io.write(colorsLibrary.Blue) end
-      if c == "purple" then io.write(colorsLibrary.Purple) end
-      if c == "cyan" then io.write(colorsLibrary.Cyan) end
+      if c == "red" then io.write(colorsLibrary._RED) end
+      if c == "green" then io.write(colorsLibrary._GREEN) end
+      if c == "yellow" then io.write(colorsLibrary._YELLOW) end
+      if c == "blue" then io.write(colorsLibrary._BLUE) end
+      if c == "purple" then io.write(colorsLibrary._PURPLE) end
+      if c == "cyan" then io.write(colorsLibrary._CYAN) end
       return
    end
    error("string expected, got " .. type(c))

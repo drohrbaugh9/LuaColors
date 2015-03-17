@@ -154,16 +154,16 @@ c = {
     end
   end
 
-  --[[
-  terminalColor = function(c)
-    if type(c) == "string" then
-      c = string.lower(c)
-      if c == "red" then io.write("\x1b[0;31m") end
-      if c == "green" then io.write("\x1b[0;32m") end
-      if c == "yellow" then io.write("\x1b[0;33") end
-      if c == "blue" then io.write("\x1b[0;34m") end
-      if c == "purple" then io.write("\x1b[0;35m") end
-      if c == "cyan" then io.write("\x1b[0;36m") end
+  ---[[
+  terminalColor = function(color)
+    if type(color) == "string" then
+      color = string.lower(color)
+      if color == "red" then io.write(c._COLORSTART .. c._BLACKBACK .. c._REDTEXT) end
+      if color == "green" then io.write(c._COLORSTART .. c._BLACKBACK .. c._GREENTEXT) end
+      if color == "yellow" then io.write(c._COLORSTART .. c._BLACKBACK .. c._YELLOWTEXT) end
+      if color == "blue" then io.write(c._COLORSTART .. c._BLACKBACK .. c._BLUETEXT) end
+      if color == "purple" then io.write(c._COLORSTART .. c._BLACKBACK .. c._PURPLETEXT) end
+      if color == "cyan" then io.write(c._COLORSTART .. c._BLACKBACK .. c._CYANTEXT) end
       return
     end
     error("string expected, got " .. type(c))

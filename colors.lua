@@ -69,13 +69,13 @@ colorsLibrary = {
     bc = string.lower(bc)
     local backColor = ""
 
-    if not string.find(colorsLibrary.availableColors, c) == nil then
+    if not string.find(colorsLibrary.availableColors, c .. " ") == nil then
       textColor = colorsLibrary.colors[c]
     else
       textColor = "0m"
     end
 
-    if not string.find(colorsLibrary.availableColors, bc) == nil then
+    if not string.find(colorsLibrary.availableColors, bc .. " ") == nil then
       backColor = colorsLibrary.colors[bc]
     else
       backColor = "0;"
@@ -92,6 +92,7 @@ colorsLibrary = {
     else
       return colorsLibrary._COLORSTART .. backColor .. textColor .. tostring(s) .. colorLibrary._COLOREND
     end
+    
     error("string expected, got " .. type(s))
   end,
 

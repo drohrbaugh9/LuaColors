@@ -132,7 +132,7 @@ c = {
     if type(bandColor) == "string" then
       if type(errorMessage) == "string" then
 	if type(lineNumber) == "number" or type(lineNumber) == "nil" then
-	  c.colorBand("red")
+	  c.colorBand("red", 80)
 	  error(errorMessage, lineNumber)
         end
         error("number expected, got " .. type(lineNumber))

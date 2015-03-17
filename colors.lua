@@ -131,9 +131,9 @@ c = {
   colorError = function(errorMessage, lineNumber, bandColor)
     if type(bandColor) == "string" then
       if type(errorMessage) == "string" then
-	if type(lineNumber) == "number" or type(lineNumber) == "nil" then
-	  c.colorBand("red", 200)
-	  error(errorMessage, lineNumber)
+        if type(lineNumber) == "number" or type(lineNumber) == "nil" then
+          io.write(c.colorBand("red", 200))
+          error(errorMessage, lineNumber)
         end
         error("number expected, got " .. type(lineNumber))
       end
@@ -143,16 +143,36 @@ c = {
   end,
 
   colorBand = function(bandColor, bandLength)
-     if type(bandColor) == "string" then
+    if type(bandColor) == "string" then
       local band = ""
       for i = 1, bandLength do
         band = band .. " "
       end
-      io.write(c.color(band, bandColor, bandColor))
+      return c.color(band, bandColor, bandColor)
     else
       error("string expected, got " .. type(bandColor))
     end
-  end
+  end,
+
+  tableLength = function(t)
+    local count = 0
+    for _ in pairs(t) do count = count + 1 end
+    return count
+  end,
+
+  colorMatrix = function(t)
+    if type(t) == "table" then
+      local s = ""
+      for row = 1, c.tableLength(t) do
+        for col = 1, c.tableLength(t[row]) do
+          s = s .. c.color("  ", t[row][col], t[row][col])
+        end
+        s = s .. "\n"
+      end
+      return s
+    end
+    error("table expected, got " .. type(t))
+  end--,
 
   --[[
   terminalColor = function(color)

@@ -12,7 +12,7 @@ colors = {},
 availableColors = "red, green, yellow, blue, purple, lightblue",
 
 getAvailableColors = function()
-   return red("red, ") .. green("green, ") .. yellow("yellow, ") .. blue("blue, ") .. purple("purple, ") .. lightBlue("lightblue")
+   return colorsLibrary.red("red, ") .. colorsLibrary.green("green, ") .. colorsLibrary.yellow("yellow, ") .. colorsLibrary.blue("blue, ") .. colorsLibrary.purple("purple, ") .. colorsLibrary.lightBlue("lightblue")
 end,
 
 values = function(t)

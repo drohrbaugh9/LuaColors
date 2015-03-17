@@ -1,16 +1,8 @@
 colorsLibrary = {
 
-_RED = "\x1b[0;31m",
-_GREEN = "\x1b[0;32m",
-_YELLOW = "\x1b[0;33m",
-_BLUE = "\x1b[0;34m",
-_PURPLE = "\x1b[0;35m",
-_CYAN = "\x1b[0;36m",
-_COLOREND = "\x1b[0m",
+_RED = "\x1b[0;31m", _GREEN = "\x1b[0;32m", _YELLOW = "\x1b[0;33m", _BLUE = "\x1b[0;34m", _PURPLE = "\x1b[0;35m", _CYAN = "\x1b[0;36m", _COLOREND = "\x1b[0m",
 
-colors = {},
-
-availableColors = "red, green, yellow, blue, purple, cyan",
+colors = {}, availableColors = "red, green, yellow, blue, purple, cyan",
 
 getAvailableColors = function()
    return "The available colors are " .. colorsLibrary.red("red") .. ", " .. colorsLibrary.green("green") .. ", " .. colorsLibrary.yellow("yellow") .. ", " .. colorsLibrary.blue("blue") .. ", " .. colorsLibrary.purple("purple") .. ", and " .. colorsLibrary.cyan("cyan") .. "."
@@ -33,19 +25,12 @@ initialize = function()
 end,
 
 --function redPrint(s) print(red(s)) end
-
 --function greenPrint(s) print(green(s)) end
-
 --function yellowPrint(s) print(yellow(s)) end
-
 --function bluePrint(s) print(blue(s)) end
-
 --function purplePrint(s) print(purple(s)) end
-
 --function lightBluePrint(s) print(lightBlue(s)) end
-
 --function colorPrint(s, c) print(color(s, c)) end
-
 --function multipleColorsPrint(t, c) print(multipleColors(t, c)) end
 
 color = function(s, c)
@@ -71,29 +56,17 @@ color = function(s, c)
    error("string expected, got " .. type(s))
 end,
 
-red = function(s)
-   return colorsLibrary.color(s, "red")
-end,
+red = function(s) return colorsLibrary.color(s, "red") end,
 
-green = function(s)
-   return colorsLibrary.color(s, "green")
-end,
+green = function(s) return colorsLibrary.color(s, "green") end,
 
-yellow = function(s)
-   return colorsLibrary.color(s, "yellow")
-end,
+yellow = function(s) return colorsLibrary.color(s, "yellow") end,
 
-blue = function(s)
-   return colorsLibrary.color(s, "blue")
-end,
+blue = function(s) return colorsLibrary.color(s, "blue") end,
 
-purple = function(s)
-   return colorsLibrary.color(s, "purple")
-end,
+purple = function(s) return colorsLibrary.color(s, "purple") end,
 
-cyan = function(s)
-   return colorsLibrary.color(s, "cyan")
-end,
+cyan = function(s) return colorsLibrary.color(s, "cyan") end,
 
 multipleColors = function(t, c)
    if c == nil then

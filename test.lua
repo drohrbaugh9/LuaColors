@@ -7,4 +7,4 @@ print(c.multipleColors({{"C","red"},{"O","green"},{"L","yellow"},{"O","blue"},{"
 
 print(c.getAvailableColors())
 
-c.terminalColor("yellOw")
+--c.terminalColor("yellOw")

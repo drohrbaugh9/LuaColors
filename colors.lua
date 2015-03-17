@@ -21,10 +21,10 @@ colorsLibrary = {
 
   colors = {},
 
-  availableColors = "blacktext redtext greentext yellowtext bluetext purpletext cyantext whitetext blackback redback greenback yellowback blueback purpleback cyanback whiteback",
+  availableColors = "black,red,green,yellow,blue,purple,cyan,white",
 
   getAvailableColors = function()
-    return "The available colors are \x1b[0;47;30mblack\x1b[0m " .. colorsLibrary.red("red") .. ", " .. colorsLibrary.green("green") .. ", " .. colorsLibrary.yellow("yellow") .. ", " .. colorsLibrary.blue("blue") .. ", " .. colorsLibrary.purple("purple") .. ", " .. colorsLibrary.cyan("cyan") .. ", and white."
+    return "The available colors are \x1b[0;47;30mblack\x1b[0m " .. colorsLibrary.red("red", " ") .. ", " .. colorsLibrary.green("green", " ") .. ", " .. colorsLibrary.yellow("yellow", " ") .. ", " .. colorsLibrary.blue("blue", " ") .. ", " .. colorsLibrary.purple("purple", " ") .. ", " .. colorsLibrary.cyan("cyan", " ") .. ", and white."
   end,
 
   values = function(t)
@@ -59,6 +59,9 @@ colorsLibrary = {
       error("string expected, got " .. type(c))
     end
 
+    if c == "" then c = " " end
+    if bc == "" then bc = " " end
+
     c = string.lower(c)
     local textColor = ""
 
@@ -69,16 +72,16 @@ colorsLibrary = {
     bc = string.lower(bc)
     local backColor = ""
 
-    if not string.find(colorsLibrary.availableColors, c .. " ") == nil then
-      textColor = colorsLibrary.colors[c]
-    else
+    if string.find(colorsLibrary.availableColors, c) == nil or c == "," then
       textColor = "0m"
+    else
+      textColor = colorsLibrary.colors[c .. "text"]
     end
 
-    if not string.find(colorsLibrary.availableColors, bc .. " ") == nil then
-      backColor = colorsLibrary.colors[bc]
-    else
+    if string.find(colorsLibrary.availableColors, bc) == nil or c == "," then
       backColor = "0;"
+    else
+      backColor = colorsLibrary.colors[bc .. "back"]
     end
 
     if type(s) == "string" or type(s) == "number" then
@@ -92,21 +95,21 @@ colorsLibrary = {
     else
       return colorsLibrary._COLORSTART .. backColor .. textColor .. tostring(s) .. colorLibrary._COLOREND
     end
-    
+
     error("string expected, got " .. type(s))
   end,
 
-  red = function(s) return colorsLibrary.color(s, "redtext", "") end,
+  red = function(s) return colorsLibrary.color(s, "red", "") end,
 
-  green = function(s) return colorsLibrary.color(s, "greentext", "") end,
+  green = function(s) return colorsLibrary.color(s, "green", "") end,
 
-  yellow = function(s) return colorsLibrary.color(s, "yellowtext", "") end,
+  yellow = function(s) return colorsLibrary.color(s, "yellow", "") end,
 
-  blue = function(s) return colorsLibrary.color(s, "bluetext", "") end,
+  blue = function(s) return colorsLibrary.color(s, "blue", "") end,
 
-  purple = function(s) return colorsLibrary.color(s, "purpletext", "") end,
+  purple = function(s) return colorsLibrary.color(s, "purple", "") end,
 
-  cyan = function(s) return colorsLibrary.color(s, "cyantext", "") end,
+  cyan = function(s) return colorsLibrary.color(s, "cyan", "") end,
 
   multipleColors = function(t, c)
     if c == nil then

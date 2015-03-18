@@ -36,3 +36,5 @@ io.write(c.colorBand("cyan", 200))
 io.write(c.colorBand("white", 200))
 
 print("\n")
+
+c.colorError("this error is a test", nil, "yellow")

@@ -23,3 +23,5 @@ print(c.multipleColors({{"C","red",bc},{"O","green",bc},{"L","yellow",bc},{"O","
 
 bc = "white"
 print(c.multipleColors({{"C","red",bc},{"O","green",bc},{"L","yellow",bc},{"O","blue",bc},{"R","purple",bc},{"S","cyan",bc}},""))
+
+dofile("ColoradoFlag.lua")

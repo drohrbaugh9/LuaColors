@@ -23,6 +23,3 @@ print(c.multipleColors({{"C","red",bc},{"O","green",bc},{"L","yellow",bc},{"O","
 
 bc = "white"
 print(c.multipleColors({{"C","red",bc},{"O","green",bc},{"L","yellow",bc},{"O","blue",bc},{"R","purple",bc},{"S","cyan",bc}},""))
-
-print("\x1b[0;31m")
-error("this error is a test")

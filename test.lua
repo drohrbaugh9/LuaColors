@@ -25,3 +25,12 @@ bc = "white"
 print(c.multipleColors({{"C","red",bc},{"O","green",bc},{"L","yellow",bc},{"O","blue",bc},{"R","purple",bc},{"S","cyan",bc}},""))
 
 dofile("ColoradoFlag.lua")
+dofile("dealWithItGlasses.lua")
+
+io.write(c.colorBand("red", 200))
+io.write(c.colorBand("green", 200))
+io.write(c.colorBand("yellow", 200))
+io.write(c.colorBand("blue", 200))
+io.write(c.colorBand("purple", 200))
+io.write(c.colorBand("cyan", 200))
+io.write(c.colorBand("white", 200))

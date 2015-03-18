@@ -146,6 +146,9 @@ c = {
   end,
 
   colorBand = function(bandColor, bandLength)
+    if not type(bandLength) == "number" then
+      bandLength = 200
+    end
     if type(bandColor) == "string" then
       local band = ""
       for i = 1, bandLength do

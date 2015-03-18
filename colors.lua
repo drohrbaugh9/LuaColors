@@ -146,7 +146,7 @@ c = {
   end,
 
   colorBand = function(bandColor, bandLength)
-    if not type(bandLength) == "number" then
+    if not type(bandLength) == "number" or bandLength > 200 then
       bandLength = 200
     end
     if type(bandColor) == "string" then

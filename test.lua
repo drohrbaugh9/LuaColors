@@ -34,3 +34,5 @@ io.write(c.colorBand("blue", 200))
 io.write(c.colorBand("purple", 200))
 io.write(c.colorBand("cyan", 200))
 io.write(c.colorBand("white", 200))
+
+print("\n")

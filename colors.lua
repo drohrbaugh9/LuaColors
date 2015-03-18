@@ -132,8 +132,11 @@ c = {
     if type(bandColor) == "string" then
       if type(errorMessage) == "string" then
         if type(lineNumber) == "number" or type(lineNumber) == "nil" then
-          io.write(c.colorBand("red", 200))
-          error(errorMessage, lineNumber)
+	  if not string.find(c.availableColors, bandColor) == nil then
+            io.write(c.colorBand("red", 200))
+            error(errorMessage, lineNumber)
+	  end
+	  error("color " .. bandColor .. " not found")
         end
         error("number expected, got " .. type(lineNumber))
       end

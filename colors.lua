@@ -135,7 +135,7 @@ c = {
           if string.find(c.availableColors, bandColor) == nil then
             error("color " .. bandColor .. " not found")
           else
-            io.write(c.colorBand(bandColor, 200))
+	    io.write(c.colorBand(bandColor, 200))
             error(errorMessage, lineNumber)
           end
         end

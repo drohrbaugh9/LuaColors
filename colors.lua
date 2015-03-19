@@ -24,7 +24,7 @@ c = {
   availableColors = "black,red,green,yellow,blue,purple,cyan,white",
 
   getAvailableColors = function()
-    return "The available colors are \x1b[0;47;30mblack\x1b[0m " .. c.red("red", " ") .. ", " .. c.green("green", " ") .. ", " .. c.yellow("yellow", " ") .. ", " .. c.blue("blue", " ") .. ", " .. c.purple("purple", " ") .. ", " .. c.cyan("cyan", " ") .. ", and white."
+    return "The available colors are \x1b[0;47;30mblack\x1b[0m, " .. c.red("red", " ") .. ", " .. c.green("green", " ") .. ", " .. c.yellow("yellow", " ") .. ", " .. c.blue("blue", " ") .. ", " .. c.purple("purple", " ") .. ", and " .. c.cyan("cyan", " ") .. "."
   end,
 
   values = function(t)

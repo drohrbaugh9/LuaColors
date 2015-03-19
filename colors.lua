@@ -188,6 +188,7 @@ c = {
     error("table expected, got " .. type(t))
   end,
 
+  --[[
   colorMatrixWithPauses = function(t)
     if type(t) == "table" then
       local s = ""
@@ -200,7 +201,7 @@ c = {
         c.sleep(0.1)
       end
     end
-  end--,
+  end--,--]]
 
   --[[terminalColor = function(color) if type(color) == "string" then color = string.lower(color); if color == "black" then io.write(c._COLORSTART .. c._BLACKBACK .. c._BLACKTEXT); elseif color == "red" then io.write(c._COLORSTART .. c._BLACKBACK .. c._REDTEXT); elseif color == "green" then io.write(c._COLORSTART .. c._BLACKBACK .. c._GREENTEXT); elseif color == "yellow" then io.write(c._COLORSTART .. c._BLACKBACK .. c._YELLOWTEXT); elseif color == "blue" then io.write(c._COLORSTART .. c._BLACKBACK .. c._BLUETEXT); elseif color == "purple" then io.write(c._COLORSTART .. c._BLACKBACK .. c._PURPLETEXT); elseif color == "cyan" then io.write(c._COLORSTART .. c._BLACKBACK .. c._CYANTEXT); else return; end error("string expected, got " .. type(c)); end--]]
 

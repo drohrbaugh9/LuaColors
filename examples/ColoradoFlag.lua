@@ -4,7 +4,7 @@ local bt = {b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b,b}
 local r = "red"
 local w = "white"
 local y = "yellow"
-io.write(c.colorMatrix({bt,bt,bt,
+io.write(c.colorMatrixWithPauses({bt,bt,bt,
       {b,b,b,b,b,b,b,r,r,r,r,r,r,b,b,b,b,b,b,b,b,b,b,b},
       {b,b,b,b,b,b,r,r,r,r,r,r,r,r,b,b,b,b,b,b,b,b,b,b},
       {b,b,b,b,b,r,r,r,r,r,r,r,r,r,r,b,b,b,b,b,b,b,b,b},

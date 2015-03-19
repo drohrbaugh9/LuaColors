@@ -132,12 +132,12 @@ c = {
     if type(bandColor) == "string" then
       if type(errorMessage) == "string" then
         if type(lineNumber) == "number" or type(lineNumber) == "nil" then
-	  if string.find(c.availableColors, bandColor) == nil then
-	    error("color " .. bandColor .. " not found")
-	  else
+          if string.find(c.availableColors, bandColor) == nil then
+            error("color " .. bandColor .. " not found")
+          else
             io.write(c.colorBand(bandColor, 200))
             error(errorMessage, lineNumber)
-	  end
+          end
         end
         error("number expected, got " .. type(lineNumber))
       end
@@ -167,6 +167,13 @@ c = {
     return count
   end,
 
+  clock = os.clock,
+
+  sleep = function(n)
+    local t0 = c.clock()
+    while c.clock() - t0 <= n do end
+  end,
+
   colorMatrix = function(t)
     if type(t) == "table" then
       local s = ""
@@ -179,6 +186,20 @@ c = {
       return s
     end
     error("table expected, got " .. type(t))
+  end,
+
+  colorMatrixWithPauses = function(t)
+    if type(t) == "table" then
+      local s = ""
+      for row = 1, c.tableLength(t) do
+        for col = 1, c.tableLength(t[row]) do
+          s = s .. c.color("  ", t[row][col], t[row][col])
+        end
+        io.write(s .. "\n")
+        s = ""
+        c.sleep(0.1)
+      end
+    end
   end--,
 
   --[[terminalColor = function(color) if type(color) == "string" then color = string.lower(color); if color == "black" then io.write(c._COLORSTART .. c._BLACKBACK .. c._BLACKTEXT); elseif color == "red" then io.write(c._COLORSTART .. c._BLACKBACK .. c._REDTEXT); elseif color == "green" then io.write(c._COLORSTART .. c._BLACKBACK .. c._GREENTEXT); elseif color == "yellow" then io.write(c._COLORSTART .. c._BLACKBACK .. c._YELLOWTEXT); elseif color == "blue" then io.write(c._COLORSTART .. c._BLACKBACK .. c._BLUETEXT); elseif color == "purple" then io.write(c._COLORSTART .. c._BLACKBACK .. c._PURPLETEXT); elseif color == "cyan" then io.write(c._COLORSTART .. c._BLACKBACK .. c._CYANTEXT); else return; end error("string expected, got " .. type(c)); end--]]

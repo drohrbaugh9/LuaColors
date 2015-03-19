@@ -27,13 +27,13 @@ print(c.multipleColors({{"C","red",bc},{"O","green",bc},{"L","yellow",bc},{"O","
 dofile("examples/ColoradoFlag.lua")
 dofile("examples/dealWithItGlasses.lua")
 
-io.write(c.colorBand("red", 200))
-io.write(c.colorBand("green", 200))
-io.write(c.colorBand("yellow", 200))
-io.write(c.colorBand("blue", 200))
-io.write(c.colorBand("purple", 200))
-io.write(c.colorBand("cyan", 200))
-io.write(c.colorBand("white", 200))
+io.write(c.colorBand("red", 80))
+io.write(c.colorBand("green", 80))
+io.write(c.colorBand("yellow", 80))
+io.write(c.colorBand("blue", 80))
+io.write(c.colorBand("purple", 80))
+io.write(c.colorBand("cyan", 80))
+io.write(c.colorBand("white", 80))
 
 print("\n")
 

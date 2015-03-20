@@ -168,12 +168,11 @@ c = {
     return count
   end,
 
-  clock = os.clock,
-
+  --[[
   sleep = function(n)
-    local t0 = c.clock()
-    while c.clock() - t0 <= n do end
-  end,
+    local t0 = os.clock()
+    while os.clock() - t0 <= n do end
+  end,--]]
 
   colorMatrix = function(t)
     if type(t) == "table" then

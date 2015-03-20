@@ -1,5 +1,6 @@
 c = {
 
+  --These variables are all the escape sequences that this library uses
   _COLORSTART = "\x1b[",
   _BLACKBACK = "40;",
   _REDBACK = "41;",
@@ -19,19 +20,24 @@ c = {
   _WHITETEXT = "37m",
   _COLOREND = "\x1b[0m",
 
+  --This table will contain all the above variables
   colors = {},
 
+  --This string contains all the available colors
   availableColors = "black,red,green,yellow,blue,purple,cyan,white",
 
+  --This function returns a string of all the available colors in color
   getAvailableColors = function()
     return "The available colors are \x1b[0;47;30mblack\x1b[0m, " .. c.red("red", " ") .. ", " .. c.green("green", " ") .. ", " .. c.yellow("yellow", " ") .. ", " .. c.blue("blue", " ") .. ", " .. c.purple("purple", " ") .. ", and " .. c.cyan("cyan", " ") .. "."
   end,
 
+  --This function is a simple iterator that loops through a table and returns the elements of the table
   values = function(t)
     local i = 0
     return function () i = i + 1; return t[i] end
   end,
 
+  --This function initializes the colors table
   initialize = function()
     local ct = {}
     ct["blackback"] = c._BLACKBACK
@@ -53,6 +59,7 @@ c = {
     c.colors = ct
   end,
 
+  --This function takes a value and returns it as a string with the proper escape sequences to print it with the desired text and background colors.
   color = function(s, color, bc)
 
     if not type(color) == "string" then
@@ -84,18 +91,22 @@ c = {
       backColor = c.colors[bc .. "back"]
     end
 
-    if type(s) == "string" or type(s) == "number" then
+  --Is s is a string or number, then it can be concatenated with the proper escape sequences without any other commands  
+  if type(s) == "string" or type(s) == "number" then
       return c._COLORSTART .. backColor .. textColor .. s .. c._COLOREND
-    elseif type(s) == "table" then
+  --If s is a table, then its values are extracted and put into a string with spaces between elements and the proper escape sequences  
+  elseif type(s) == "table" then
       local st = ""
       for v in c.values(t) do
         st = st .. c._COLORSTART .. backColor .. textColor .. v .. c._COLOREND .. " "
       end
       return st
-    else
+  --If s is not a string, number, or table, the program tries to turn it into a string and adds the proper escape sequences.  
+  else
       return c._COLORSTART .. backColor .. textColor .. tostring(s) .. colorLibrary._COLOREND
     end
 
+  --If s cannot be turned into a string, then the error() function is called
     error("string expected, got " .. type(s))
   end,
 
@@ -111,6 +122,9 @@ c = {
 
   cyan = function(s) return c.color(s, "cyan", "") end,
 
+  --This function takes a table like this one
+  --  {{"text","text color","background color"},{"text,"text color","background color"}}
+  --    and prints out the text with the corresponding colors with the specified character between each portion of text.
   multipleColors = function(t, char)
     if char == nil then
       char = " "
@@ -128,6 +142,7 @@ c = {
     error("table expected, got " .. type(t))
   end,
 
+  --This function prints a band of the specified color across the screen before calling the error() function with the specified error message and line number
   colorError = function(errorMessage, lineNumber, bandColor)
     if type(bandColor) == "string" then
       if type(errorMessage) == "string" then
@@ -147,6 +162,7 @@ c = {
     error("string expected, got " .. type(bandColor))
   end,
 
+  --This function prints a band of the specified color a specified number of characters long across the screen
   colorBand = function(bandColor, bandLength)
     if not type(bandLength) == "number" or bandLength > 200 then
       bandLength = 200
@@ -162,6 +178,7 @@ c = {
     end
   end,
 
+  --This function returns the length of the specified table
   tableLength = function(t)
     local count = 0
     for _ in pairs(t) do count = count + 1 end
@@ -174,6 +191,11 @@ c = {
     while os.clock() - t0 <= n do end
   end,--]]
 
+  --This function receives a table like this one
+  --  {{"color","color","color","color"},
+  --   {"color","color","color","color"}}
+  --    and prints it out in the same orientation replacing the strings with a band of color that is 2 characters wide
+  --See examples/ColoradoFlag.lua and examples/dealWithItGlasses for a better explanation.
   colorMatrix = function(t)
     if type(t) == "table" then
       local s = ""

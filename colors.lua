@@ -91,22 +91,22 @@ c = {
       backColor = c.colors[bc .. "back"]
     end
 
-  --Is s is a string or number, then it can be concatenated with the proper escape sequences without any other commands  
-  if type(s) == "string" or type(s) == "number" then
+    --Is s is a string or number, then it can be concatenated with the proper escape sequences without any other commands  
+    if type(s) == "string" or type(s) == "number" then
       return c._COLORSTART .. backColor .. textColor .. s .. c._COLOREND
-  --If s is a table, then its values are extracted and put into a string with spaces between elements and the proper escape sequences  
-  elseif type(s) == "table" then
+      --If s is a table, then its values are extracted and put into a string with spaces between elements and the proper escape sequences  
+    elseif type(s) == "table" then
       local st = ""
       for v in c.values(t) do
         st = st .. c._COLORSTART .. backColor .. textColor .. v .. c._COLOREND .. " "
       end
       return st
-  --If s is not a string, number, or table, the program tries to turn it into a string and adds the proper escape sequences.  
-  else
+      --If s is not a string, number, or table, the program tries to turn it into a string and adds the proper escape sequences.  
+    else
       return c._COLORSTART .. backColor .. textColor .. tostring(s) .. colorLibrary._COLOREND
     end
 
-  --If s cannot be turned into a string, then the error() function is called
+    --If s cannot be turned into a string, then the error() function is called
     error("string expected, got " .. type(s))
   end,
 
@@ -150,8 +150,8 @@ c = {
           if string.find(c.availableColors, bandColor) == nil then
             error("color " .. bandColor .. " not found")
           else
-	    io.write(c.colorBand(bandColor, 80))
-	    io.write("\n")
+            io.write(c.colorBand(bandColor, 80))
+            io.write("\n")
             error(errorMessage, lineNumber)
           end
         end
@@ -185,17 +185,11 @@ c = {
     return count
   end,
 
-  --[[
-  sleep = function(n)
-    local t0 = os.clock()
-    while os.clock() - t0 <= n do end
-  end,--]]
-
-  --This function receives a table like this one
-  --  {{"color","color","color","color"},
-  --   {"color","color","color","color"}}
-  --    and prints it out in the same orientation replacing the strings with a band of color that is 2 characters wide
-  --See examples/ColoradoFlag.lua and examples/dealWithItGlasses for a better explanation.
+--This function receives a table like this one
+--  {{"color","color","color","color"},
+--   {"color","color","color","color"}}
+--    and prints it out in the same orientation replacing the strings with a band of color that is 2 characters wide
+--See examples/ColoradoFlag.lua and examples/dealWithItGlasses for a better explanation.
   colorMatrix = function(t)
     if type(t) == "table" then
       local s = ""
@@ -208,14 +202,7 @@ c = {
       return s
     end
     error("table expected, got " .. type(t))
-  end,
-
-  --[[
-  colorMatrixWithPauses = function(t) if type(t) == "table" then local s = "" for row = 1, c.tableLength(t) do for col = 1, c.tableLength(t[row]) do s = s .. c.color("  ", t[row][col], t[row][col]) end io.write(s .. "\n") s = "" c.sleep(0.1) end end end,--]]
-
-  --[[
-  terminalColor = function(color) if type(color) == "string" then color = string.lower(color); if color == "black" then io.write(c._COLORSTART .. c._BLACKBACK .. c._BLACKTEXT); elseif color == "red" then io.write(c._COLORSTART .. c._BLACKBACK .. c._REDTEXT); elseif color == "green" then io.write(c._COLORSTART .. c._BLACKBACK .. c._GREENTEXT); elseif color == "yellow" then io.write(c._COLORSTART .. c._BLACKBACK .. c._YELLOWTEXT); elseif color == "blue" then io.write(c._COLORSTART .. c._BLACKBACK .. c._BLUETEXT); elseif color == "purple" then io.write(c._COLORSTART .. c._BLACKBACK .. c._PURPLETEXT); elseif color == "cyan" then io.write(c._COLORSTART .. c._BLACKBACK .. c._CYANTEXT); else return; end error("string expected, got " .. type(c)); end--]]
-
+  end
 }
 
 return c

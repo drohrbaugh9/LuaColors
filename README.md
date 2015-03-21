@@ -1,5 +1,5 @@
 # LuaColors
-This repository contains a library of functions to print text in different colors in a Ubuntu Terminal. It requires Lua 5.2.
+This repository contains a library of functions to print text in different colors in a Ubuntu Terminal. It requires at least Lua 5.2.
 
 Here's what it can do:
 

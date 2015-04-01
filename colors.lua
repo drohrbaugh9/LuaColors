@@ -190,7 +190,7 @@ This function receives a table like this one
     {{"color","color","color","color"},
      {"color","color","color","color"}}
       and prints it out in the same orientation replacing the strings with a band of color that is 2 characters wide
-  See examples/ColoradoFlag.lua and examples/dealWithItGlasses for a better explanation.]]
+  See examples/ColoradoFlag.lua and examples/dealWithItGlasses.lua for a better explanation.]]
   colorMatrix = function(t)
     if type(t) == "table" then
       local s = ""

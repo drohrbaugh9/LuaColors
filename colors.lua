@@ -28,7 +28,7 @@ c = {
 
   --This function returns a string of all the available colors in color
   getAvailableColors = function()
-    return "The available colors are \x1b[0;47;30mblack\x1b[0m, " .. c.red("red", " ") .. ", " .. c.green("green", " ") .. ", " .. c.yellow("yellow", " ") .. ", " .. c.blue("blue", " ") .. ", " .. c.purple("purple", " ") .. ", and " .. c.cyan("cyan", " ") .. "."
+    return "The available colors are \x1b[47;30mblack\x1b[0m, " .. c.red("red", " ") .. ", " .. c.green("green", " ") .. ", " .. c.yellow("yellow", " ") .. ", " .. c.blue("blue", " ") .. ", " .. c.purple("purple", " ") .. ", and " .. c.cyan("cyan", " ") .. "."
   end,
 
   --This function is a simple iterator that loops through a table and returns the elements of the table

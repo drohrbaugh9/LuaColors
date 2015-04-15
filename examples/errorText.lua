@@ -1,5 +1,5 @@
 c = require("colors") c.initialize()
-b = "black1"
+b = ""
 r = "red"
 io.write(c.colorMatrix({
       {r,r,r,b,r,r,b,b,r,r,b,b,r,r,r,b,r,r,b},
